@@ -17,27 +17,19 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.text());
 app.use(bodyParser.json({ type: "application/vnd.api+json" }));
 
-// Star Wars Characters (DATA)
+// Reservation (DATA)
 // =============================================================
-// var characters = [{
-//   routeName: "yoda",
-//   name: "Yoda",
-//   role: "Jedi Master",
-//   age: 900,
-//   forcePoints: 2000
-// }, {
-//   routeName: "darthmaul",
-//   name: "Darth Maul",
-//   role: "Sith Lord",
-//   age: 200,
-//   forcePoints: 1200
-// }, {
-//   routeName: "obiwankenobi",
-//   name: "Obi Wan Kenobi",
-//   role: "Jedi Master",
-//   age: 55,
-//   forcePoints: 1350
-// }];
+var reservations = [{
+  name: "Sherry",
+  phoneNumber: "5555555555",
+  email: "sherry.fake@gmail.com",
+  uniqueId: 12
+}, {
+  name: "LeeAnna",
+  phoneNumber: "9999999999",
+  email: "LeeAnna.fake@gmail.com",
+  uniqueId: 14
+}];
 
 // Routes
 // =============================================================
@@ -47,8 +39,9 @@ app.get("/", function(req, res) {
   res.sendFile(path.join(__dirname, "view.html"));
 });
 
-app.get("/add", function(req, res) {
+app.get("/tables", function(req, res) {
   res.sendFile(path.join(__dirname, "tables.html"));
+  console.log(reservations[0]);
 });
 
 app.get("/add", function(req, res) {
@@ -56,14 +49,14 @@ app.get("/add", function(req, res) {
 });
 
 
-// Get all characters
+// Get all reservations
 app.get("/all", function(req, res) {
-  res.json(characters);
+  res.json(reservations);
 });
 
-// Search for Specific Character (or all characters) - provides JSON
-app.get("/api/:characters?", function(req, res) {
-  var chosen = req.params.characters;
+// Search for Specific Reservation (or all reservations) - provides JSON
+app.get("/api/:reservations?", function(req, res) {
+  var chosen = req.params.reservations;
 
   if (chosen) {
     console.log(chosen);
