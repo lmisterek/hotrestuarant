@@ -1,0 +1,23 @@
+{
+  "name": "hotrestuarant",
+  "version": "1.0.0",
+  "description": "This app will make reservations at a restaurant",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lmisterek/hotrestuarant.git"
+  },
+  "author": "Omar, Jalil, LeeAnna, and Sherry",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lmisterek/hotrestuarant/issues"
+  },
+  "homepage": "https://github.com/lmisterek/hotrestuarant#readme",
+  "dependencies": {
+    "body-parser": "^1.17.2",
+    "express": "^4.15.3"
+  }
+}
