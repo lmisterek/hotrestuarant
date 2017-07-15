@@ -3,6 +3,8 @@
 var express = require("express");
 var bodyParser = require("body-parser");
 var path = require("path");
+var table = require("./tableData.js");
+//var waitingListData = require("waitListData.js");
 
 // Sets up the Express App
 // =============================================================
@@ -19,11 +21,15 @@ app.use(bodyParser.json({ type: "application/vnd.api+json" }));
 
 // Reservation (DATA)
 // =============================================================
-// var reservations = [{
-//   name: "Sherry",
-//   phoneNumber: "5555555555",
+//  var reservations = [{
+//   name: "Bob Jones",
+//   phoneNumber: "555-555-5555",
 //   email: "sherry.fake@gmail.com",
-//   uniqueId: 12
+// uniqueId: "12"
+// }];
+
+// var tableData = require("../data/tableData")
+
 // }, {
 //   name: "LeeAnna",
 //   phoneNumber: "9999999999",
@@ -59,22 +65,64 @@ app.get("/all", function(req, res) {
   res.json(reservations);
 });
 
-// Search for Specific Reservation (or all reservations) - provides JSON
-app.get("/api/:reservations?", function(req, res) {
-  var chosen = req.params.reservations;
-
-  if (chosen) {
-    console.log(chosen);
-
-    for (var i = 0; i < characters.length; i++) {
-      if (chosen === characters[i].routeName) {
-        return res.json(characters[i]);
-      }
-    }
-    return res.json(false);
-  }
-  return res.json(characters);
+app.get("/api/tables", function(req, res) {
+  console.log(table);
+  res.json(table);
+  
 });
+
+// app.get("/api/waitList", function(req, res) {
+//   res.json(waitingListData);
+// });
+
+// Post Requests
+app.post("/api/tables", function(req, res) {
+  // res.json(table);
+  var availability = true;
+  console.log(req.body);
+  var newReservation = req.body;
+  console.log(newReservation);
+
+  var waitlist = [];
+
+ if(table.length >= 5) {
+    availability = false;
+    waitlist.push(newReservation);
+ //   res.json(push())
+ }
+  else {
+   table.push(newReservation);
+
+  }
+
+ console.log(waitlist);
+// console.log(table.tableArray);
+ res.json(availability);
+});
+
+// app.post("/api/waitList", function(req, res) {
+//   res.json(waitingListData);
+// });
+
+
+
+
+// Search for Specific Reservation (or all reservations) - provides JSON
+// app.get("/api/:reservations?", function(req, res) {
+//   var chosen = req.params.reservations;
+
+//   if (chosen) {
+//     console.log(chosen);
+
+//     for (var i = 0; i < characters.length; i++) {
+//       if (chosen === characters[i].routeName) {
+//         return res.json(characters[i]);
+//       }
+//     }
+//     return res.json(false);
+//   }
+//   return res.json(characters);
+// });
 
 // Create New Characters - takes in JSON input
 app.post("/api/new", function(req, res) {
