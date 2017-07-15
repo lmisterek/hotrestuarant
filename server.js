@@ -19,17 +19,17 @@ app.use(bodyParser.json({ type: "application/vnd.api+json" }));
 
 // Reservation (DATA)
 // =============================================================
-var reservations = [{
-  name: "Sherry",
-  phoneNumber: "5555555555",
-  email: "sherry.fake@gmail.com",
-  uniqueId: 12
-}, {
-  name: "LeeAnna",
-  phoneNumber: "9999999999",
-  email: "LeeAnna.fake@gmail.com",
-  uniqueId: 14
-}];
+// var reservations = [{
+//   name: "Sherry",
+//   phoneNumber: "5555555555",
+//   email: "sherry.fake@gmail.com",
+//   uniqueId: 12
+// }, {
+//   name: "LeeAnna",
+//   phoneNumber: "9999999999",
+//   email: "LeeAnna.fake@gmail.com",
+//   uniqueId: 14
+// }];
 
 // Routes
 // =============================================================
@@ -40,16 +40,17 @@ app.get("/", function(req, res) {
 });
 
 app.get("/tables", function(req, res) {
-<<<<<<< HEAD
   res.sendFile(path.join(__dirname, "tables.html"));
-  console.log(reservations[0]);
-=======
-    res.sendFile(path.join(__dirname, "tables.html"));
->>>>>>> e43660c10471fb1fb1a9b2c805438409ec3990f8
+
 });
 
 app.get("/reserve", function(req, res) {
   res.sendFile(path.join(__dirname, "reservation.html"));
+});
+
+app.post("/reserve", function(req, res) {
+  res.sendFile(path.join(__dirname, "reservation.html"));
+  console.log("here");
 });
 
 
