@@ -40,11 +40,15 @@ app.get("/", function(req, res) {
 });
 
 app.get("/tables", function(req, res) {
+<<<<<<< HEAD
   res.sendFile(path.join(__dirname, "tables.html"));
   console.log(reservations[0]);
+=======
+    res.sendFile(path.join(__dirname, "tables.html"));
+>>>>>>> e43660c10471fb1fb1a9b2c805438409ec3990f8
 });
 
-app.get("/add", function(req, res) {
+app.get("/reserve", function(req, res) {
   res.sendFile(path.join(__dirname, "reservation.html"));
 });
 
